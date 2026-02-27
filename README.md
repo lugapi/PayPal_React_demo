@@ -229,6 +229,64 @@ npx expo run:android
 > The first build takes ~5–10 minutes as Xcode/Gradle compiles native code.
 > Subsequent launches use hot reload and are instant.
 
+### Running on a physical iPhone
+
+You can run the app directly on your personal iPhone for live demos.
+
+#### Prerequisites
+
+- **Xcode** installed with command-line tools
+- **An Apple ID** (free account works — no paid Developer Program required)
+- **USB cable** to connect your iPhone to your Mac
+- **iOS 16+**: Developer Mode enabled on the device
+
+#### Step 1 — Enable Developer Mode on your iPhone
+
+1. Go to **Settings → Privacy & Security → Developer Mode**
+2. Toggle it **on**
+3. Your iPhone will restart — confirm when prompted
+
+#### Step 2 — Configure code signing in Xcode
+
+1. Open the project in Xcode:
+   ```bash
+   open ios/myshop.xcworkspace
+   ```
+2. In the left sidebar, click the **myshop** project (blue icon)
+3. Select the **myshop** target
+4. Go to the **Signing & Capabilities** tab
+5. Check **Automatically manage signing**
+6. Under **Team**, select your Apple ID
+   - If your Apple ID is not listed: **Xcode → Settings → Accounts → "+" → Add your Apple ID**
+
+#### Step 3 — Build and run
+
+Connect your iPhone via USB, then:
+
+```bash
+npx expo run:ios --device
+```
+
+You will be prompted to select your device from the list.
+
+#### Step 4 — Trust the developer on your iPhone
+
+On first launch, iOS will block the app. To fix this:
+
+1. Go to **Settings → General → VPN & Device Management**
+2. Tap your Apple ID under "Developer App"
+3. Tap **Trust**
+
+The app will now launch normally.
+
+#### Limitations with a free Apple ID
+
+| Limitation | Detail |
+|---|---|
+| Provisioning profile expiry | Expires after **7 days** — re-run `npx expo run:ios --device` to renew |
+| Max apps | **3 apps** installed simultaneously via free signing |
+| No push notifications | Push requires a paid Developer Program membership |
+
 ---
 
 ## Project Structure
