@@ -1,0 +1,6 @@
+# Ensure binary files are never treated as text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
