@@ -39,7 +39,8 @@ The in-app toggle lets you switch between all four modes in real time to observe
 - **Cart** — quantity controls, item removal, real-time total
 - **Checkout** — shipping form + card payment (simulated) + PayPal (4 modes)
 - **PayPal integration toggle** — switch between all four modes directly from the checkout header
-- **Order confirmation** — animated success screen
+- **App Switch toggle** — enable/disable PayPal App Switch to test native app-based authentication
+- **Order confirmation** — animated success screen with PayPal payment details (order ID, status, integration mode)
 
 ---
 
@@ -179,6 +180,61 @@ RN ──── getPayPalTokens() ───────────────�
 
 **Pros:** Modern architecture, server-side order management, payment method eligibility checks, native web components.
 **Cons:** Requires `CLIENT_SECRET` for token generation and order management. More complex setup than V5.
+
+---
+
+## App Switch
+
+### What is App Switch?
+
+[App Switch](https://developer.paypal.com/docs/checkout/standard/customize/app-switch/) is a PayPal feature that redirects the buyer to the **native PayPal app** for authentication instead of the in-browser login flow. When the PayPal app is installed on the device, the buyer can authenticate using biometrics (Face ID, Touch ID) or a passkey — resulting in a faster, more secure checkout experience.
+
+### How it works in this demo
+
+An **App Switch toggle** is displayed in the checkout header, next to the integration mode pill:
+
+```
+[App Switch 🔘] [🌐 WebView]
+```
+
+| Mode | App Switch support |
+|---|---|
+| **WebView JS SDK** | Supported |
+| **PopupBridge (Hybrid)** | Supported |
+| **Native REST API** | Not applicable (already uses system browser) |
+| **JS SDK V6** | Not applicable (session-based flow) |
+
+- In **supported modes** (WebView, PopupBridge): the toggle is active. Turning it ON adds `appSwitchWhenAvailable: true` to the `paypal.Buttons()` configuration.
+- In **unsupported modes** (Native, V6): the toggle is visible but greyed out. Tapping it shows an alert explaining that App Switch is only available with JS SDK V5 modes.
+
+### Technical implementation
+
+When App Switch is enabled, two changes are made to the PayPal JS SDK integration:
+
+**1. Button configuration** — the `appSwitchWhenAvailable` flag is added:
+```javascript
+var buttons = paypal.Buttons({
+  appSwitchWhenAvailable: true,   // ← enables App Switch
+  createOrder: ...,
+  onApprove: ...,
+});
+```
+
+**2. Resume flow** — when the buyer returns from the PayPal app, they may land in a new browser tab. The SDK provides `hasReturned()` and `resume()` to handle this:
+```javascript
+if (buttons.hasReturned()) {
+  buttons.resume();              // ← resume after App Switch return
+} else {
+  buttons.render('#paypal-button-container');
+}
+```
+
+### Behavior
+
+- **PayPal app installed** → the SDK redirects to the native PayPal app for authentication, then returns to the merchant app.
+- **PayPal app not installed** → the SDK silently falls back to the standard web login flow. No error, no callback — the flag is simply ignored.
+
+> To test App Switch, you need a **physical device** with the **PayPal app installed** and a sandbox buyer account logged in.
 
 ---
 

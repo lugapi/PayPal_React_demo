@@ -12,12 +12,13 @@ interface WebViewMessage {
 
 interface Props {
   amount: number;
-  onSuccess: (payerName?: string) => void;
+  appSwitch?: boolean;
+  onSuccess: (orderId?: string, payerName?: string) => void;
   onCancel: () => void;
   onError: (message: string) => void;
 }
 
-export function PayPalWebViewCheckout({ amount, onSuccess, onCancel, onError }: Props) {
+export function PayPalWebViewCheckout({ amount, appSwitch, onSuccess, onCancel, onError }: Props) {
   const [loading, setLoading] = useState(true);
   const webViewRef = useRef<WebView>(null);
 
@@ -26,7 +27,7 @@ export function PayPalWebViewCheckout({ amount, onSuccess, onCancel, onError }: 
       const msg: WebViewMessage = JSON.parse(event.nativeEvent.data);
       switch (msg.type) {
         case 'success':
-          onSuccess(msg.payerName);
+          onSuccess(msg.orderId, msg.payerName);
           break;
         case 'cancel':
           onCancel();
@@ -40,7 +41,7 @@ export function PayPalWebViewCheckout({ amount, onSuccess, onCancel, onError }: 
     }
   }
 
-  const html = getPayPalCheckoutHtml(amount);
+  const html = getPayPalCheckoutHtml(amount, appSwitch);
 
   return (
     <View style={styles.container}>

@@ -28,7 +28,7 @@ interface WebViewMessage {
 
 interface Props {
   amount: number;
-  onSuccess: (payerName?: string) => void;
+  onSuccess: (orderId?: string, payerName?: string) => void;
   onCancel: () => void;
   onError: (message: string) => void;
 }
@@ -56,7 +56,7 @@ export function PayPalV6WebViewCheckout({ amount, onSuccess, onCancel, onError }
       const msg: WebViewMessage = JSON.parse(event.nativeEvent.data);
       switch (msg.type) {
         case 'success':
-          onSuccess(msg.payerName);
+          onSuccess(msg.orderId, msg.payerName);
           break;
         case 'cancel':
           onCancel();

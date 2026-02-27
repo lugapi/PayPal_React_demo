@@ -32,12 +32,13 @@ interface WebViewMsg {
 
 interface Props {
   amount: number;
-  onSuccess: (payerName?: string) => void;
+  appSwitch?: boolean;
+  onSuccess: (orderId?: string, payerName?: string) => void;
   onCancel: () => void;
   onError: (message: string) => void;
 }
 
-export function PayPalPopupBridgeCheckout({ amount, onSuccess, onCancel, onError }: Props) {
+export function PayPalPopupBridgeCheckout({ amount, appSwitch, onSuccess, onCancel, onError }: Props) {
   const [loading, setLoading] = useState(true);
   const webViewRef = useRef<WebView>(null);
   // Guard: prevent opening ASWebAuth more than once per payment session.
@@ -76,7 +77,7 @@ export function PayPalPopupBridgeCheckout({ amount, onSuccess, onCancel, onError
           // If the SDK already captured via onApprove ('success' message received first),
           // this capture will silently fail (order already COMPLETED).
           capturePayPalOrder(token).then((captured) => {
-            if (captured) onSuccess();
+            if (captured) onSuccess(token);
           }).catch(() => {
             // Capture already done by the SDK on the WebView side — no action needed.
           });
@@ -106,7 +107,7 @@ export function PayPalPopupBridgeCheckout({ amount, onSuccess, onCancel, onError
           // the token so RN can finalize the capture
           if (msg.token) {
             capturePayPalOrder(msg.token).then((captured) => {
-              if (captured) onSuccess();
+              if (captured) onSuccess(msg.token);
               else onError('Payment capture failed.');
             }).catch(() => onError('Capture error.'));
           } else {
@@ -116,7 +117,7 @@ export function PayPalPopupBridgeCheckout({ amount, onSuccess, onCancel, onError
 
         case 'success':
           // The SDK handled capture itself (via onApprove → actions.order.capture)
-          onSuccess(msg.payerName);
+          onSuccess(msg.orderId, msg.payerName);
           break;
 
         case 'cancel':
@@ -132,7 +133,7 @@ export function PayPalPopupBridgeCheckout({ amount, onSuccess, onCancel, onError
     }
   }
 
-  const html = getPayPalPopupBridgeHtml(amount);
+  const html = getPayPalPopupBridgeHtml(amount, appSwitch);
 
   return (
     <View style={styles.container}>

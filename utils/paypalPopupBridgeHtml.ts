@@ -24,7 +24,7 @@ const CLIENT_ID = process.env.EXPO_PUBLIC_PAYPAL_CLIENT_ID ?? '';
  *     (triggers popupBridge.onComplete → SDK's onApprove if supported)
  *     OR navigates directly to order-success if capture already done on RN side.
  */
-export function getPayPalPopupBridgeHtml(amountEur: number): string {
+export function getPayPalPopupBridgeHtml(amountEur: number, appSwitch?: boolean): string {
   const amountStr = amountEur.toFixed(2);
 
   return `<!DOCTYPE html>
@@ -242,7 +242,8 @@ export function getPayPalPopupBridgeHtml(amountEur: number): string {
   <!-- PayPal JS SDK loaded AFTER the polyfills -->
   <script src="https://www.paypal.com/sdk/js?client-id=${CLIENT_ID}&currency=EUR&intent=capture"></script>
   <script>
-    paypal.Buttons({
+    var buttons = paypal.Buttons({
+      ${appSwitch ? 'appSwitchWhenAvailable: true,' : ''}
       style: {
         layout: 'vertical',
         color: 'gold',
@@ -285,7 +286,13 @@ export function getPayPalPopupBridgeHtml(amountEur: number): string {
         postMsg({ type: 'error', message: err ? err.toString() : 'Unknown error' });
       }
 
-    }).render('#paypal-button-container');
+    });
+
+    if (buttons.hasReturned()) {
+      buttons.resume();
+    } else {
+      buttons.render('#paypal-button-container');
+    }
   </script>
 </body>
 </html>`;

@@ -1,11 +1,26 @@
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useRef, useEffect } from 'react';
+
+const MODE_LABELS: Record<string, string> = {
+  native:      '📱 Native REST API',
+  webview:     '🌐 WebView JS SDK',
+  popupbridge: '🔗 PopupBridge (Hybrid)',
+  webviewv6:   '🚀 JS SDK V6',
+};
 
 export default function OrderSuccessScreen() {
   const router = useRouter();
+  const { orderId, payerName, method, mode } = useLocalSearchParams<{
+    orderId?: string;
+    payerName?: string;
+    method?: string;
+    mode?: string;
+  }>();
   const scale = useRef(new Animated.Value(0)).current;
   const opacity = useRef(new Animated.Value(0)).current;
+
+  const isPayPal = method === 'paypal';
 
   useEffect(() => {
     Animated.parallel([
@@ -31,8 +46,33 @@ export default function OrderSuccessScreen() {
         </View>
         <Text style={styles.title}>Order confirmed!</Text>
         <Text style={styles.subtitle}>
-          Thank you for your purchase. You will receive a confirmation email shortly.
+          Thank you{payerName ? `, ${payerName}` : ''} for your purchase.{'\n'}
+          You will receive a confirmation email shortly.
         </Text>
+
+        {isPayPal && (
+          <View style={styles.paypalBox}>
+            <Text style={styles.paypalTitle}>PayPal Payment Details</Text>
+            {orderId && (
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Order ID</Text>
+                <Text style={styles.detailValue} numberOfLines={1}>{orderId}</Text>
+              </View>
+            )}
+            <View style={styles.detailRow}>
+              <Text style={styles.detailLabel}>Status</Text>
+              <View style={styles.statusBadge}>
+                <Text style={styles.statusText}>COMPLETED</Text>
+              </View>
+            </View>
+            {mode && (
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Integration</Text>
+                <Text style={styles.detailValue}>{MODE_LABELS[mode] ?? mode}</Text>
+              </View>
+            )}
+          </View>
+        )}
 
         <View style={styles.infoBox}>
           <Text style={styles.infoRow}>📦 Estimated delivery: 3-5 business days</Text>
@@ -88,6 +128,56 @@ const styles = StyleSheet.create({
     color: '#777',
     textAlign: 'center',
     lineHeight: 22,
+  },
+  paypalBox: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 20,
+    width: '100%',
+    gap: 14,
+    borderLeftWidth: 4,
+    borderLeftColor: '#003087',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  paypalTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#003087',
+    marginBottom: 2,
+  },
+  detailRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  detailLabel: {
+    fontSize: 13,
+    color: '#888',
+    fontWeight: '600',
+  },
+  detailValue: {
+    fontSize: 13,
+    color: '#1A1A2E',
+    fontWeight: '600',
+    flexShrink: 1,
+    textAlign: 'right',
+    maxWidth: '60%',
+  },
+  statusBadge: {
+    backgroundColor: '#E8F5E9',
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    borderRadius: 10,
+  },
+  statusText: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: '#2E7D32',
+    letterSpacing: 0.5,
   },
   infoBox: {
     backgroundColor: '#fff',

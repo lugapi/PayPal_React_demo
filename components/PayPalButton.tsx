@@ -11,7 +11,7 @@ import { createPayPalOrder, capturePayPalOrder } from '../utils/paypal';
 
 interface Props {
   amount: number;
-  onSuccess: () => void;
+  onSuccess: (orderId?: string, payerName?: string) => void;
   onCancel: () => void;
   onError: (message: string) => void;
 }
@@ -37,7 +37,7 @@ export function PayPalButton({ amount, onSuccess, onCancel, onError }: Props) {
         if (paypalToken) {
           const captured = await capturePayPalOrder(paypalToken);
           if (captured) {
-            onSuccess();
+            onSuccess(paypalToken);
           } else {
             onError('Payment capture failed.');
           }

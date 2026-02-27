@@ -8,7 +8,7 @@ const CLIENT_ID = process.env.EXPO_PUBLIC_PAYPAL_CLIENT_ID ?? '';
  *
  * Communicates with React Native via window.ReactNativeWebView.postMessage()
  */
-export function getPayPalCheckoutHtml(amountEur: number): string {
+export function getPayPalCheckoutHtml(amountEur: number, appSwitch?: boolean): string {
   const amountStr = amountEur.toFixed(2);
 
   return `<!DOCTYPE html>
@@ -138,7 +138,8 @@ export function getPayPalCheckoutHtml(amountEur: number): string {
       postMsg({ type: 'cancel' });
     }
 
-    paypal.Buttons({
+    var buttons = paypal.Buttons({
+      ${appSwitch ? 'appSwitchWhenAvailable: true,' : ''}
       style: {
         layout: 'vertical',
         color: 'gold',
@@ -179,7 +180,13 @@ export function getPayPalCheckoutHtml(amountEur: number): string {
         postMsg({ type: 'error', message: err ? err.toString() : 'Unknown error' });
       }
 
-    }).render('#paypal-button-container');
+    });
+
+    if (buttons.hasReturned()) {
+      buttons.resume();
+    } else {
+      buttons.render('#paypal-button-container');
+    }
   </script>
 </body>
 </html>`;

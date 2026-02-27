@@ -1,11 +1,13 @@
 import { Stack } from 'expo-router';
 import { CartProvider } from '../context/CartContext';
 import { PaymentModeProvider } from '../context/PaymentModeContext';
+import { AppSwitchProvider } from '../context/AppSwitchContext';
 
 export default function RootLayout() {
   return (
     <CartProvider>
     <PaymentModeProvider>
+    <AppSwitchProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen
@@ -25,6 +27,7 @@ export default function RootLayout() {
           }}
         />
       </Stack>
+    </AppSwitchProvider>
     </PaymentModeProvider>
     </CartProvider>
   );

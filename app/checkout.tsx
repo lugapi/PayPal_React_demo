@@ -9,11 +9,13 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  Switch,
 } from 'react-native';
 import { useRouter, Stack } from 'expo-router';
 import { useCart } from '../context/CartContext';
 import { usePaymentMode } from '../context/PaymentModeContext';
 import type { PaymentMode } from '../context/PaymentModeContext';
+import { useAppSwitch } from '../context/AppSwitchContext';
 import { PayPalButton } from '../components/PayPalButton';
 import { PayPalWebViewCheckout } from '../components/PayPalWebViewCheckout';
 import { PayPalPopupBridgeCheckout } from '../components/PayPalPopupBridgeCheckout';
@@ -35,8 +37,22 @@ const MODE_PILL_BG: Record<PaymentMode, string> = {
   webviewv6:   '#FFF3E0',
 };
 
-function ModeHeaderToggle() {
+function HeaderRight() {
   const { mode, setMode } = usePaymentMode();
+  const { appSwitch, setAppSwitch } = useAppSwitch();
+
+  const supportsAppSwitch = mode === 'webview' || mode === 'popupbridge';
+
+  function handleAppSwitchChange(value: boolean) {
+    if (!supportsAppSwitch) {
+      Alert.alert(
+        'App Switch unavailable',
+        'App Switch is only available with JS SDK V5 modes (WebView and PopupBridge). Switch to one of these modes to enable it.'
+      );
+      return;
+    }
+    setAppSwitch(value);
+  }
 
   function handleToggle() {
     Alert.alert(
@@ -69,11 +85,25 @@ function ModeHeaderToggle() {
   }
 
   return (
-    <TouchableOpacity style={styles.headerToggle} onPress={handleToggle} activeOpacity={0.7}>
-      <View style={[styles.modePill, { backgroundColor: MODE_PILL_BG[mode] }]}>
-        <Text style={styles.modePillText}>{MODE_LABELS[mode]}</Text>
+    <View style={styles.headerRight}>
+      <View style={styles.appSwitchToggle}>
+        <Text style={[styles.appSwitchLabel, !supportsAppSwitch && { color: '#ccc' }]}>App Switch</Text>
+        <Switch
+          value={supportsAppSwitch && appSwitch}
+          onValueChange={handleAppSwitchChange}
+          trackColor={{ false: '#D1D1D6', true: '#34C759' }}
+          style={[
+            { transform: [{ scaleX: 0.75 }, { scaleY: 0.75 }] },
+            !supportsAppSwitch && { opacity: 0.4 },
+          ]}
+        />
       </View>
-    </TouchableOpacity>
+      <TouchableOpacity onPress={handleToggle} activeOpacity={0.7}>
+        <View style={[styles.modePill, { backgroundColor: MODE_PILL_BG[mode] }]}>
+          <Text style={styles.modePillText}>{MODE_LABELS[mode]}</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -132,17 +162,18 @@ export default function CheckoutScreen() {
   const router = useRouter();
   const { items, totalPrice, clearCart } = useCart();
   const { mode } = usePaymentMode();
+  const { appSwitch } = useAppSwitch();
 
   const [form, setForm] = useState<FormData>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    address: '',
-    city: '',
-    zip: '',
-    cardNumber: '',
-    cardExpiry: '',
-    cardCvv: '',
+    firstName: 'John',
+    lastName: 'Smith',
+    email: 'john.smith@example.com',
+    address: '123 Main Street',
+    city: 'Paris',
+    zip: '75001',
+    cardNumber: '4111 1111 1111 1111',
+    cardExpiry: '12/28',
+    cardCvv: '123',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
@@ -188,18 +219,25 @@ export default function CheckoutScreen() {
     return digits.length >= 3 ? digits.slice(0, 2) + '/' + digits.slice(2) : digits;
   }
 
-  function onPayPalSuccess() {
+  function onPayPalSuccess(orderId?: string, payerName?: string) {
     clearCart();
-    router.replace('/order-success');
+    const params = new URLSearchParams();
+    if (orderId) params.set('orderId', orderId);
+    if (payerName) params.set('payerName', payerName);
+    params.set('method', 'paypal');
+    params.set('mode', mode);
+    const qs = params.toString();
+    router.replace(`/order-success${qs ? `?${qs}` : ''}`);
   }
 
   // In WebView mode, replace all content with the PayPal WebView (JS SDK)
   if (mode === 'webview') {
     return (
       <View style={{ flex: 1 }}>
-        <Stack.Screen options={{ headerRight: () => <ModeHeaderToggle /> }} />
+        <Stack.Screen options={{ headerRight: () => <HeaderRight /> }} />
         <PayPalWebViewCheckout
           amount={total}
+          appSwitch={appSwitch}
           onSuccess={onPayPalSuccess}
           onCancel={() => Alert.alert('Cancelled', 'PayPal payment cancelled.')}
           onError={(msg) => Alert.alert('PayPal Error', msg)}
@@ -212,9 +250,10 @@ export default function CheckoutScreen() {
   if (mode === 'popupbridge') {
     return (
       <View style={{ flex: 1 }}>
-        <Stack.Screen options={{ headerRight: () => <ModeHeaderToggle /> }} />
+        <Stack.Screen options={{ headerRight: () => <HeaderRight /> }} />
         <PayPalPopupBridgeCheckout
           amount={total}
+          appSwitch={appSwitch}
           onSuccess={onPayPalSuccess}
           onCancel={() => Alert.alert('Cancelled', 'PayPal payment cancelled.')}
           onError={(msg) => Alert.alert('PayPal Error', msg)}
@@ -227,7 +266,7 @@ export default function CheckoutScreen() {
   if (mode === 'webviewv6') {
     return (
       <View style={{ flex: 1 }}>
-        <Stack.Screen options={{ headerRight: () => <ModeHeaderToggle /> }} />
+        <Stack.Screen options={{ headerRight: () => <HeaderRight /> }} />
         <PayPalV6WebViewCheckout
           amount={total}
           onSuccess={onPayPalSuccess}
@@ -241,7 +280,7 @@ export default function CheckoutScreen() {
   // Native mode: React Native form + PayPal REST API button
   return (
     <View style={{ flex: 1 }}>
-      <Stack.Screen options={{ headerRight: () => <ModeHeaderToggle /> }} />
+      <Stack.Screen options={{ headerRight: () => <HeaderRight /> }} />
 
       <KeyboardAvoidingView
         style={{ flex: 1 }}
@@ -368,8 +407,21 @@ export default function CheckoutScreen() {
 
 const styles = StyleSheet.create({
   // Header toggle
-  headerToggle: {
+  headerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
     marginRight: 8,
+  },
+  appSwitchToggle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+  },
+  appSwitchLabel: {
+    fontSize: 10,
+    fontWeight: '600',
+    color: '#888',
   },
   modePill: {
     paddingHorizontal: 12,
