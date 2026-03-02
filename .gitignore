@@ -30,6 +30,10 @@ yarn-error.*
 .DS_Store
 *.pem
 
+# Xcode user data
+xcuserdata/
+*.xcuserstate
+
 # local env files — contiennent les credentials, ne jamais committer
 .env
 .env*.local

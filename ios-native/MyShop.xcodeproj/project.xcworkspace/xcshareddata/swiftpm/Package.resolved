@@ -1,0 +1,15 @@
+{
+  "originHash" : "7fb7f400057d34f199000d753b47024670f27c695ff7f62ba23fff1e1514dbf5",
+  "pins" : [
+    {
+      "identity" : "popup-bridge-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/braintree/popup-bridge-ios",
+      "state" : {
+        "revision" : "0aa9ce097a79ba5099b19c65bdd8ca5a6fd64b82",
+        "version" : "3.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

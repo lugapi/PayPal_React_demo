@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06E6AA11EB8273F22E1B9283 /* PayPalWebViewCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968128EAA474D5740E820B3 /* PayPalWebViewCheckout.swift */; };
+		17D4757CBFC24EBA00A737EB /* PayPalWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE785857A17C374B60407151 /* PayPalWebView.swift */; };
+		19B1337EFC2F9A4D36275D2C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1741078180F9A7BB6B6BF79F /* Config.swift */; };
+		1D309C9561B006F0805D3FCB /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8865DC7613880A5F9821B2 /* CartManager.swift */; };
+		1E44C66A3072F47188CD1C2D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E4D6B459642380084BD36 /* AppState.swift */; };
+		39D1352DE39DAA7B6C0BCF32 /* PayPalPopupBridgeHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F4755228A0ACDCC244AF0 /* PayPalPopupBridgeHTML.swift */; };
+		3C840A96D2E611932D67E8CE /* PayPalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD213BB847349F9005CCC26C /* PayPalService.swift */; };
+		4ADCE48782D219F00FAB8184 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72458A142A7FEABA48FE1A4C /* CheckoutView.swift */; };
+		4D6DA2D3606472D495A692E2 /* PayPalPopupBridgeCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615747FE2F626BAB79A1F4A2 /* PayPalPopupBridgeCheckout.swift */; };
+		51FFF4ED830A7A02B691A9B1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270AECC999B970300741FA64 /* Product.swift */; };
+		569D597E9D50E52044FA6BE2 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C023655836D891751E0887A /* CartItem.swift */; };
+		6045B1406A23218723DCC512 /* PayPalV6CheckoutHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD723E409D68E33B12D49C /* PayPalV6CheckoutHTML.swift */; };
+		95DAA209349801975C4D4230 /* OrderSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51733008D56127B43B5D6A41 /* OrderSuccessView.swift */; };
+		997D23BD0AFF63F82B330C54 /* PayPalV6WebViewCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D70DBF4485F2502CEBCD180 /* PayPalV6WebViewCheckout.swift */; };
+		A9EAF9357FEFCFF52D36EEB5 /* PayPalNativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82728D6DA7A0E1220745ECF2 /* PayPalNativeButton.swift */; };
+		B689504C51E2918022982B1D /* MyShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E084E9F6578A8A6A285C11 /* MyShopApp.swift */; };
+		DA4B644088E0EA11C8B20783 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D6040CBBBEF431FBD9CF4D /* CartView.swift */; };
+		DFDA3C8D2BDC4F629DC8CF25 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3EE2150AF6A5C7424E3F76 /* ProductListView.swift */; };
+		F0271243648B5B966603313F /* PayPalCheckoutHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAE81B803FB617DF8E02C54 /* PayPalCheckoutHTML.swift */; };
+		F3FBD732A333AA02E32151DC /* PopupBridge in Frameworks */ = {isa = PBXBuildFile; productRef = 9A3CB3E2D936B92ADA1C9B40 /* PopupBridge */; };
+		FE8AE54E0F4CAF6A7E3FCC63 /* PaymentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB682E66D31436A543CFE47B /* PaymentMode.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0548E9DAB1FFEBEC226A9E2F /* MyShop.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MyShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09E084E9F6578A8A6A285C11 /* MyShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopApp.swift; sourceTree = "<group>"; };
+		1741078180F9A7BB6B6BF79F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		186E4D6B459642380084BD36 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		1D70DBF4485F2502CEBCD180 /* PayPalV6WebViewCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalV6WebViewCheckout.swift; sourceTree = "<group>"; };
+		270AECC999B970300741FA64 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		27D6040CBBBEF431FBD9CF4D /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		2EAE81B803FB617DF8E02C54 /* PayPalCheckoutHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalCheckoutHTML.swift; sourceTree = "<group>"; };
+		3ECD723E409D68E33B12D49C /* PayPalV6CheckoutHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalV6CheckoutHTML.swift; sourceTree = "<group>"; };
+		4968128EAA474D5740E820B3 /* PayPalWebViewCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalWebViewCheckout.swift; sourceTree = "<group>"; };
+		4C3F4755228A0ACDCC244AF0 /* PayPalPopupBridgeHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalPopupBridgeHTML.swift; sourceTree = "<group>"; };
+		51733008D56127B43B5D6A41 /* OrderSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSuccessView.swift; sourceTree = "<group>"; };
+		5A24651BB7547177F5FE60A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		615747FE2F626BAB79A1F4A2 /* PayPalPopupBridgeCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalPopupBridgeCheckout.swift; sourceTree = "<group>"; };
+		6C023655836D891751E0887A /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		72458A142A7FEABA48FE1A4C /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		82728D6DA7A0E1220745ECF2 /* PayPalNativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalNativeButton.swift; sourceTree = "<group>"; };
+		8F3EE2150AF6A5C7424E3F76 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
+		AC8865DC7613880A5F9821B2 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		BB682E66D31436A543CFE47B /* PaymentMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMode.swift; sourceTree = "<group>"; };
+		CD213BB847349F9005CCC26C /* PayPalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalService.swift; sourceTree = "<group>"; };
+		FE785857A17C374B60407151 /* PayPalWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalWebView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		02905B88E6C307B89CB74978 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3FBD732A333AA02E32151DC /* PopupBridge in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09374D6BE8B5E8D04E9DF96E /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				2EAE81B803FB617DF8E02C54 /* PayPalCheckoutHTML.swift */,
+				4C3F4755228A0ACDCC244AF0 /* PayPalPopupBridgeHTML.swift */,
+				3ECD723E409D68E33B12D49C /* PayPalV6CheckoutHTML.swift */,
+			);
+			path = HTML;
+			sourceTree = "<group>";
+		};
+		47F2CD80A4B1EA8BFD287555 /* PayPal */ = {
+			isa = PBXGroup;
+			children = (
+				82728D6DA7A0E1220745ECF2 /* PayPalNativeButton.swift */,
+				615747FE2F626BAB79A1F4A2 /* PayPalPopupBridgeCheckout.swift */,
+				CD213BB847349F9005CCC26C /* PayPalService.swift */,
+				1D70DBF4485F2502CEBCD180 /* PayPalV6WebViewCheckout.swift */,
+				FE785857A17C374B60407151 /* PayPalWebView.swift */,
+				4968128EAA474D5740E820B3 /* PayPalWebViewCheckout.swift */,
+			);
+			path = PayPal;
+			sourceTree = "<group>";
+		};
+		55DC8B346554889BFD76146A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6C023655836D891751E0887A /* CartItem.swift */,
+				BB682E66D31436A543CFE47B /* PaymentMode.swift */,
+				270AECC999B970300741FA64 /* Product.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		93FE6485CE7E58C0023431E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27D6040CBBBEF431FBD9CF4D /* CartView.swift */,
+				72458A142A7FEABA48FE1A4C /* CheckoutView.swift */,
+				51733008D56127B43B5D6A41 /* OrderSuccessView.swift */,
+				8F3EE2150AF6A5C7424E3F76 /* ProductListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B4037795EA852793BB53CD77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0548E9DAB1FFEBEC226A9E2F /* MyShop.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF9982434F6635A0954D6CCF /* State */ = {
+			isa = PBXGroup;
+			children = (
+				186E4D6B459642380084BD36 /* AppState.swift */,
+				AC8865DC7613880A5F9821B2 /* CartManager.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		FAA70D07549A23A87FCE52BC /* MyShop */ = {
+			isa = PBXGroup;
+			children = (
+				1741078180F9A7BB6B6BF79F /* Config.swift */,
+				5A24651BB7547177F5FE60A4 /* Info.plist */,
+				09E084E9F6578A8A6A285C11 /* MyShopApp.swift */,
+				09374D6BE8B5E8D04E9DF96E /* HTML */,
+				55DC8B346554889BFD76146A /* Models */,
+				47F2CD80A4B1EA8BFD287555 /* PayPal */,
+				EF9982434F6635A0954D6CCF /* State */,
+				93FE6485CE7E58C0023431E3 /* Views */,
+			);
+			path = MyShop;
+			sourceTree = "<group>";
+		};
+		FF7F2CABD36627FEF33BCD61 = {
+			isa = PBXGroup;
+			children = (
+				FAA70D07549A23A87FCE52BC /* MyShop */,
+				B4037795EA852793BB53CD77 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		692DADC8262A49752CCB7C29 /* MyShop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F837C1FAAD203BE5F507F68 /* Build configuration list for PBXNativeTarget "MyShop" */;
+			buildPhases = (
+				EDA29CB8F439D2A62D90F5E6 /* Sources */,
+				02905B88E6C307B89CB74978 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyShop;
+			packageProductDependencies = (
+				9A3CB3E2D936B92ADA1C9B40 /* PopupBridge */,
+			);
+			productName = MyShop;
+			productReference = 0548E9DAB1FFEBEC226A9E2F /* MyShop.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7216D60BC8C5F36F49719622 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					692DADC8262A49752CCB7C29 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 012910B136C9FB615A32C20B /* Build configuration list for PBXProject "MyShop" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = FF7F2CABD36627FEF33BCD61;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A464DC52617201C926655DBF /* XCRemoteSwiftPackageReference "popup-bridge-ios" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				692DADC8262A49752CCB7C29 /* MyShop */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDA29CB8F439D2A62D90F5E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E44C66A3072F47188CD1C2D /* AppState.swift in Sources */,
+				569D597E9D50E52044FA6BE2 /* CartItem.swift in Sources */,
+				1D309C9561B006F0805D3FCB /* CartManager.swift in Sources */,
+				DA4B644088E0EA11C8B20783 /* CartView.swift in Sources */,
+				4ADCE48782D219F00FAB8184 /* CheckoutView.swift in Sources */,
+				19B1337EFC2F9A4D36275D2C /* Config.swift in Sources */,
+				B689504C51E2918022982B1D /* MyShopApp.swift in Sources */,
+				95DAA209349801975C4D4230 /* OrderSuccessView.swift in Sources */,
+				F0271243648B5B966603313F /* PayPalCheckoutHTML.swift in Sources */,
+				A9EAF9357FEFCFF52D36EEB5 /* PayPalNativeButton.swift in Sources */,
+				4D6DA2D3606472D495A692E2 /* PayPalPopupBridgeCheckout.swift in Sources */,
+				39D1352DE39DAA7B6C0BCF32 /* PayPalPopupBridgeHTML.swift in Sources */,
+				3C840A96D2E611932D67E8CE /* PayPalService.swift in Sources */,
+				6045B1406A23218723DCC512 /* PayPalV6CheckoutHTML.swift in Sources */,
+				997D23BD0AFF63F82B330C54 /* PayPalV6WebViewCheckout.swift in Sources */,
+				17D4757CBFC24EBA00A737EB /* PayPalWebView.swift in Sources */,
+				06E6AA11EB8273F22E1B9283 /* PayPalWebViewCheckout.swift in Sources */,
+				FE8AE54E0F4CAF6A7E3FCC63 /* PaymentMode.swift in Sources */,
+				51FFF4ED830A7A02B691A9B1 /* Product.swift in Sources */,
+				DFDA3C8D2BDC4F629DC8CF25 /* ProductListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		022F6F99FA66671CA40575F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MyShop/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyShop;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.myshop;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1AF703927D061CFFE52FE4AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MyShop/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyShop;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.myshop;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8650AEFEF541DAD0AB8A812D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		AD390FD2269CCC88D698E722 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyShop/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		012910B136C9FB615A32C20B /* Build configuration list for PBXProject "MyShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8650AEFEF541DAD0AB8A812D /* Debug */,
+				AD390FD2269CCC88D698E722 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		0F837C1FAAD203BE5F507F68 /* Build configuration list for PBXNativeTarget "MyShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AF703927D061CFFE52FE4AC /* Debug */,
+				022F6F99FA66671CA40575F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A464DC52617201C926655DBF /* XCRemoteSwiftPackageReference "popup-bridge-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/braintree/popup-bridge-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9A3CB3E2D936B92ADA1C9B40 /* PopupBridge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A464DC52617201C926655DBF /* XCRemoteSwiftPackageReference "popup-bridge-ios" */;
+			productName = PopupBridge;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 7216D60BC8C5F36F49719622 /* Project object */;
+}
