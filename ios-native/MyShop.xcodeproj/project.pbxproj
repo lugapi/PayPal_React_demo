@@ -48,6 +48,7 @@
 		6C023655836D891751E0887A /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		72458A142A7FEABA48FE1A4C /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		82728D6DA7A0E1220745ECF2 /* PayPalNativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalNativeButton.swift; sourceTree = "<group>"; };
+		8650A87B2E6F728F83F143AB /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		8F3EE2150AF6A5C7424E3F76 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		AC8865DC7613880A5F9821B2 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		BB682E66D31436A543CFE47B /* PaymentMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMode.swift; sourceTree = "<group>"; };
@@ -100,6 +101,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		6B2C946868449F0FAB7A3916 /* ios-native */ = {
+			isa = PBXGroup;
+			children = (
+				8650A87B2E6F728F83F143AB /* Secrets.xcconfig */,
+			);
+			name = "ios-native";
+			path = .;
+			sourceTree = "<group>";
+		};
 		93FE6485CE7E58C0023431E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 		FF7F2CABD36627FEF33BCD61 = {
 			isa = PBXGroup;
 			children = (
+				6B2C946868449F0FAB7A3916 /* ios-native */,
 				FAA70D07549A23A87FCE52BC /* MyShop */,
 				B4037795EA852793BB53CD77 /* Products */,
 			);
@@ -280,6 +291,7 @@
 		};
 		8650AEFEF541DAD0AB8A812D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8650A87B2E6F728F83F143AB /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -347,6 +359,7 @@
 		};
 		AD390FD2269CCC88D698E722 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8650A87B2E6F728F83F143AB /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

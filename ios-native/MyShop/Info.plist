@@ -18,6 +18,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>PayPalClientID</key>
+	<string>$(PAYPAL_CLIENT_ID)</string>
+	<key>PayPalClientSecret</key>
+	<string>$(PAYPAL_CLIENT_SECRET)</string>
 	<key>UILaunchScreen</key>
 	<dict/>
 </dict>

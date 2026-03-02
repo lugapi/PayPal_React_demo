@@ -34,9 +34,17 @@ yarn-error.*
 xcuserdata/
 *.xcuserstate
 
+# Android / Gradle build artifacts
+.gradle/
+build/
+.idea/
+*.iml
+local.properties
+
 # local env files — contiennent les credentials, ne jamais committer
 .env
 .env*.local
+Secrets.xcconfig
 
 # typescript
 *.tsbuildinfo
@@ -47,3 +55,4 @@ xcuserdata/
 
 # large video files
 *.mov
+*.bak

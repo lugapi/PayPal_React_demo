@@ -2,17 +2,16 @@ import Foundation
 
 enum Config {
     // MARK: - PayPal Sandbox Credentials
-    // Set these values or use environment variables.
+    // Values are read from Secrets.xcconfig via Info.plist.
+    // Copy Secrets.xcconfig.example → Secrets.xcconfig and fill in your credentials.
     // Get your credentials at https://developer.paypal.com → Apps & Credentials
 
     static let paypalClientID: String = {
-        ProcessInfo.processInfo.environment["PAYPAL_CLIENT_ID"]
-            ?? "YOUR_PAYPAL_CLIENT_ID"
+        Bundle.main.infoDictionary?["PayPalClientID"] as? String ?? "YOUR_PAYPAL_CLIENT_ID"
     }()
 
     static let paypalClientSecret: String = {
-        ProcessInfo.processInfo.environment["PAYPAL_CLIENT_SECRET"]
-            ?? "YOUR_PAYPAL_CLIENT_SECRET"
+        Bundle.main.infoDictionary?["PayPalClientSecret"] as? String ?? "YOUR_PAYPAL_CLIENT_SECRET"
     }()
 
     static let paypalBaseURL = "https://api-m.sandbox.paypal.com"

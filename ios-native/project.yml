@@ -5,6 +5,10 @@ options:
     iOS: "17.0"
   xcodeVersion: "16.0"
 
+configFiles:
+  Debug: Secrets.xcconfig
+  Release: Secrets.xcconfig
+
 settings:
   base:
     SWIFT_VERSION: "6.0"

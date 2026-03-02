@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#F7F8FC</color>
+    <color name="primary">#6C63FF</color>
+    <color name="paypal_blue">#003087</color>
+    <color name="paypal_gold">#FFC439</color>
+    <color name="success_green">#2E7D32</color>
+</resources>

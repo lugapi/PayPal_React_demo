@@ -144,10 +144,23 @@ xcodegen generate
 open MyShop.xcodeproj
 ```
 
-Configure your PayPal sandbox credentials in [`Config.swift`](MyShop/Config.swift) or set environment variables:
+Configure your PayPal sandbox credentials in [`Config.swift`](MyShop/Config.swift):
+
+```swift
+// Replace the placeholders with your real credentials
+?? "YOUR_PAYPAL_CLIENT_ID"
+?? "YOUR_PAYPAL_CLIENT_SECRET"
 ```
-PAYPAL_CLIENT_ID=your_client_id
-PAYPAL_CLIENT_SECRET=your_client_secret
+
+To prevent accidentally committing your credentials, tell git to ignore local changes to this file:
+
+```bash
+git update-index --assume-unchanged ios-native/MyShop/Config.swift
+```
+
+To re-track the file later:
+```bash
+git update-index --no-assume-unchanged ios-native/MyShop/Config.swift
 ```
 
 ## Dependencies
